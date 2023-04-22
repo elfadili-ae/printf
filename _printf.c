@@ -10,34 +10,25 @@
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i = 0, charCount = 0;
+	unsigned int i, charCount = 0;
 
 	va_start(arguments,format);
-	while (format != NULL && format[i] != '\0')
+	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
-			{
-			case 'c':
+			if (format[i] == 'c')
 				_putchar(va_arg(arguments, int));
-				charCount++;
-				break;
-			case 's':
+			else if (format[i] == 's')
 				charCount += _puts(va_arg(arguments, char *));
-				break;
-			default:
-				_putchar('%');
-				break;
-			}
+			else if (format[i] == 'i' || format[i] == 'd')
+				charCount += int_print(va_arg(arguments, int));
 		}
 		else
-		{
 			_putchar(format[i]);
-			charCount++;
-		}
-		i++;
+		charCount++;
+
 	}
 	va_end(arguments);
 	return (charCount);
