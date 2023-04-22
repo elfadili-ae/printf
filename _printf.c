@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 	int (*fun)(va_list, int);
 
 	va_start(arguments, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -60,6 +60,5 @@ int _printf(const char *format, ...)
 
 	}
 	va_end(arguments);
-	_putchar('\n');
 	return (Count);
 }
