@@ -1,30 +1,74 @@
 #include <stdio.h>
 #include "main.h"
+#include <stdarg.h>
+
 
 /**
- * int_print - print integer
- * @a: the numbe to print
- * Return: the count of digits
+ * char_print - print a character
+ * @arg: va_list argument
+ * @buff: string pointer
+ * @i: index int string
+ * Return: new index
  */
-int int_print(int a)
+int char_print(va_list arg, char *buff, int i)
 {
-	int tmp = 0, charCounter = 0;
+	char c = va_arg(arg, int);
 
-	if (a < 0)
+	i = buffChecker(buff, i);
+	buff[i] = c;
+	i++;
+	return (i);
+}
+
+/**
+ * string_print - print a character
+ * @arg: va_list argument
+ * @buff: string pointer
+ * @i: index int string
+ * Return: new index
+ */
+int string_print(va_list arg, char *buff, int i)
+{
+	char *str = va_arg(arg, char *);
+
+        i = _strcpy(buff, str, i);
+	return (i);
+}
+/**
+ * int_print - print integer
+ * @arg: va_list argument
+ * @buff: string pointer
+ * @i: index in string
+ * Return: new index
+ */
+/*int int_print(va_list arg, char *buff, int i)
+{
+	int num = va_arg(arg, int);
+
+	if (num < 0)
 	{
-		a *= -1;
-		_putchar('-');
+		num *= -1;
+		i = buffChecker(buff, i);
+		buff[i] = '-';
+		i++;
 	}
-	while (a > 0)
+	if (a == 0)
 	{
-		tmp = tmp * 10 + (a % 10);
-		a /= 10;
+		i = buffChecker(buff, i);
+		buff[i] = '0';
+		i++;
+	}
+	while (num > 0)
+	{
+		tmp = tmp * 10 + (num % 10);
+		num /= 10;
 	}
 	while (tmp % 10 > 0)
 	{
-		_putchar((tmp % 10) + '0');
+		i = buffChecker(buff, i);
+		buff[i] = (tmp % 10) + '0';
 		tmp /= 10;
-		charCounter++;
+		i++;
 	}
-	return (charCounter);
-}
+	return (i);
+	}*/
