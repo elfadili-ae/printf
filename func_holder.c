@@ -9,13 +9,10 @@
  * @i: index int string
  * Return: new index
  */
-int char_print(va_list arg, int i)
+int char_print(va_list arg)
 {
 	char c = va_arg(arg, int);
-
-	_putchar(c);
-	i++;
-	return (i);
+	return (_putchar(c));
 }
 
 /**
@@ -24,17 +21,16 @@ int char_print(va_list arg, int i)
  * @i: index int string
  * Return: new index
  */
-int string_print(va_list arg, int i)
+int string_print(va_list arg)
 {
 	char *str = va_arg(arg, char *);
-	int y;
+	int y, c = 0;
 
 	for (y = 0; str[y] != '\0'; y++)
 	{
-		_putchar(str[y]);
-		i++;
+		c += _putchar(str[y]);
 	}
 	_putchar('\0');
 
-	return (i);
+	return (c);
 }

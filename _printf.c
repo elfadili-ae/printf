@@ -8,7 +8,7 @@
  * @c: specifier
  * Return: Function
  */
-int (*get_fun(char c))(va_list, int)
+int (*get_fun(char c))(va_list)
 {
 	int j;
 	func_t _funcs[] = {
@@ -32,32 +32,35 @@ int (*get_fun(char c))(va_list, int)
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i, Count = 0;
-	int (*fun)(va_list, int);
+	unsigned int i, Count = 0, false_flag = 0;
+	int (*fun)(va_list);
 
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
+		return (-1);
 	va_start(arguments, format);
 	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && false_flag == 0)
 		{
-			if (format[i + 1] == '%')
-			{
-				_putchar('%');
-				Count++;
-			}
-			else if (get_fun(format[i + 1]))
+			if (get_fun(format[i + 1]))
 			{
 				fun = get_fun(format[i + 1]);
-				Count = fun(arguments, Count);
+				Count = fun(arguments);
+				i++;
 			}
-			i++;
+			else
+			{
+				false_flag = 1; /*false specifier*/
+				i--;
+			}
 		}
 		else
 		{
-			_putchar(format[i]);
-			Count++;
+			false_flag = 0;
+			Count += _putchar(format[i]);
 		}
-
 	}
 	va_end(arguments);
 	return (Count);
