@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	va_list arguments;
 	unsigned int i, charCount = 0;
 
-	va_start(arguments,format);
+	va_start(arguments, format);
 	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -24,6 +24,10 @@ int _printf(const char *format, ...)
 				charCount += _puts(va_arg(arguments, char *));
 			else if (format[i] == 'i' || format[i] == 'd')
 				charCount += int_print(va_arg(arguments, int));
+			else if (format[i] == '%')
+				_putchar('%');
+			else
+				_putchar(format[--i]);
 		}
 		else
 			_putchar(format[i]);
