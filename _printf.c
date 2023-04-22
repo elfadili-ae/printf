@@ -25,11 +25,12 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			/*if (format[i + 1] == '%')
+			if (format[i + 1] == '%')
 			{
 				buff[Count] = '%';
+				i += 2;
 				Count++;
-			}*/
+			}
 			for (j = 0; _funcs[j].spec != '\0'; j++) {
 				if (_funcs[j].spec == format[i + 1])
 				{
