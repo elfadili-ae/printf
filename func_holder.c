@@ -34,6 +34,7 @@ int string_print(va_list arg, int i)
 		_putchar(str[y]);
 		i++;
 	}
+	_putchar('\0');
 
 	return (i);
 }

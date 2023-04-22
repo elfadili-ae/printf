@@ -40,8 +40,17 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			fun = get_fun(format[i + 1]);
-			Count = fun(arguments, Count);
+			if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				Count++;
+			}
+			else if (get_fun(format[i + 1]))
+			{
+				fun = get_fun(format[i + 1]);
+				Count = fun(arguments, Count);
+			}
+			i++;
 		}
 		else
 		{
