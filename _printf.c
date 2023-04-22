@@ -8,7 +8,7 @@
  * @c: specifier
  * Return: Function
  */
-int (*get_fun(char c))(va_list, char *, int)
+int (*get_fun(char c))(va_list, int)
 {
 	int j;
 	func_t _funcs[] = {
@@ -33,24 +33,24 @@ int _printf(const char *format, ...)
 {
 	va_list arguments;
 	unsigned int i, Count = 0;
-	char buff[1024];
-	int (*fun)(va_list, char *, int);
+	int (*fun)(va_list, int);
 
 	va_start(arguments, format);
-	for (i = 0; format != NULL && format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%' && format[i + 1] != '%')
-		{
-			buff[Count] = format[i];
-			Count++;
-		}
-		else if (format[i] == '%')
+		if (format[i] == '%')
 		{
 			fun = get_fun(format[i + 1]);
-			Count = fun(arguments, buff, Count);
+			Count = fun(arguments, Count);
 		}
+		else
+		{
+			_putchar(format[i]);
+			Count++;
+		}
+
 	}
 	va_end(arguments);
-	write(1, buff, Count);
+	_putchar('\n');
 	return (Count);
 }

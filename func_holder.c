@@ -6,16 +6,14 @@
 /**
  * char_print - print a character
  * @arg: va_list argument
- * @buff: string pointer
  * @i: index int string
  * Return: new index
  */
-int char_print(va_list arg, char *buff, int i)
+int char_print(va_list arg, int i)
 {
 	char c = va_arg(arg, int);
 
-	i = buffChecker(buff, i);
-	buff[i] = c;
+	_putchar(c);
 	i++;
 	return (i);
 }
@@ -23,14 +21,19 @@ int char_print(va_list arg, char *buff, int i)
 /**
  * string_print - print a character
  * @arg: va_list argument
- * @buff: string pointer
  * @i: index int string
  * Return: new index
  */
-int string_print(va_list arg, char *buff, int i)
+int string_print(va_list arg, int i)
 {
 	char *str = va_arg(arg, char *);
+	int y;
 
-	i = _strcpy(buff, str, i);
+	for (y = 0; str[y] != '\0'; y++)
+	{
+		_putchar(str[y]);
+		i++;
+	}
+
 	return (i);
 }
