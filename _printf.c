@@ -4,10 +4,10 @@
 #include "main.h"
 
 /**
-  * get_fun - get the corresponding function for the specifier
-  * @c: specifier
-  * Return: Function
-  */
+ * get_fun - get the corresponding function for the specifier
+ * @c: specifier
+ * Return: Function
+ */
 int (*get_fun(char c))(va_list, char *, int)
 {
 	int j;
@@ -39,21 +39,15 @@ int _printf(const char *format, ...)
 	va_start(arguments, format);
 	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
-		{
-			if (format[i + 1] == '%')
-			{
-				buff[Count] = '%';
-				i += 2;
-				Count++;
-			}
-			fun = get_fun(format[i + 1]);
-			Count = fun(arguments, buff, Count);
-		}
-		else
+		if (format[i] != '%' && format[i + 1] != '%')
 		{
 			buff[Count] = format[i];
 			Count++;
+		}
+		else if (format[i] == '%')
+		{
+			fun = get_fun(format[i + 1]);
+			Count = fun(arguments, buff, Count);
 		}
 	}
 	va_end(arguments);
