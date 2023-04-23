@@ -11,7 +11,7 @@ int octal_print(va_list arg)
 	unsigned int num = va_arg(arg, unsigned int);
 
 	if (num != 0)
-		i += base_converter(num, 8);
+		i += base_converter(num, 8, -1);
 	else
 		i += _putchar('0');
 
@@ -23,9 +23,15 @@ int octal_print(va_list arg)
  * @arg: argument
  * Return: digit counter
  */
-int hexa_print(__attribute__((unused)) va_list arg)
+int hexa_print(va_list arg)
 {
 	int i = 0;
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num != 0)
+		i += base_converter(num, 16, 0);
+	else
+		i += _putchar('0');
 
 	return (i);
 }
@@ -34,9 +40,15 @@ int hexa_print(__attribute__((unused)) va_list arg)
  * @arg: argument
  * Return: digit counter
  */
-int upHexa_print(__attribute__((unused)) va_list arg)
+int upHexa_print(va_list arg)
 {
 	int i = 0;
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num != 0)
+		i += base_converter(num, 16, 1);
+	else
+		i += _putchar('0');
 
 	return (i);
 }
@@ -51,7 +63,7 @@ int binary_print(va_list arg)
 	unsigned int num = va_arg(arg, unsigned int);
 
 	if (num != 0)
-		i += base_converter(num, 2);
+		i += base_converter(num, 2, -1);
 	else
 		i += _putchar('0');
 
