@@ -60,6 +60,7 @@ int _printf(const char *format, ...)
 		} else
 			Count += _putchar(format[i]);
 	}
+
 	va_end(arguments);
 	return (Count);
 }
