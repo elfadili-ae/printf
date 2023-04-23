@@ -46,7 +46,7 @@ int int_print(va_list arg)
 	int i = 0, num = va_arg(arg, int);
 	unsigned int tmp;
 
-	if ( num < 0)
+	if (num < 0)
 	{
 		i += _putchar('-');
 		tmp = -num;
