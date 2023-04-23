@@ -44,12 +44,16 @@ int string_print(va_list arg)
 int int_print(va_list arg)
 {
 	int i = 0, num = va_arg(arg, int);
+	unsigned int tmp;
 
-	if (num < 0)
+	if ( num < 0)
 	{
-		num *= -1;
 		i += _putchar('-');
+		tmp = -num;
 	}
-	i += print_num(num);
+	else
+		tmp = num;
+
+	i += print_num(tmp);
 	return (i);
 }
