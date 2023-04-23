@@ -44,6 +44,10 @@ int binary_print(va_list arg)
 	int i = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	i += base_converter(num, 2);
+	if (num != 0)
+		i += base_converter(num, 2);
+	else
+		i += _putchar('0');
+
 	return (i);
 }

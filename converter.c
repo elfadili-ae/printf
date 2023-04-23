@@ -20,8 +20,6 @@ int base_converter(unsigned long int num, int base)
 				r = num % 2;
 				i += _putchar(r + '0');
 			}
-			else if (num == 0)
-				i += _putchar(r + '0');
 			break;
 		case 8:
 			if (num > 0)
