@@ -50,12 +50,6 @@ int int_print(va_list arg)
 		num *= -1;
 		i += _putchar('-');
 	}
-	if (num == 0)
-		i += _putchar('0');
-
-	else if (num > 0)
-	{
-		i += print_num(num);
-	}
+	i += print_num(num);
 	return (i);
 }
