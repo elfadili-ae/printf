@@ -14,6 +14,8 @@ int (*get_fun(char c))(va_list)
 	func_t _funcs[] = {
 		{'c', char_print},
 		{'s', string_print},
+		{'d', int_print},
+		{'i', int_print},
 		{'\0', NULL}
 	};
 
