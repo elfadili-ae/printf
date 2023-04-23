@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 /**
   * struct func_t - specifier function
   * @spec: specifier
