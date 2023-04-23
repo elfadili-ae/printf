@@ -26,4 +26,5 @@ void buffReset(char *buff, int i);
 int buffChecker(char *buff, int i);
 int _strcpy(char *dest, char *src, int i);
 int flagIt(const char *str, int i);
+int print_num(int n);
 #endif

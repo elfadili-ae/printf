@@ -43,7 +43,7 @@ int string_print(va_list arg)
  */
 int int_print(va_list arg)
 {
-	int i = 0, tmp = 0, num = va_arg(arg, int);
+	int i = 0, num = va_arg(arg, int);
 
 	if (num < 0)
 	{
@@ -55,16 +55,7 @@ int int_print(va_list arg)
 
 	else if (num > 0)
 	{
-		while (num > 0) /* reverse number */
-		{
-			tmp = tmp * 10 + (num % 10);
-			num /= 10;
-		}
-		while (tmp % 10 > 0) /* print number */
-		{
-			i += _putchar((tmp % 10) + '0');
-			tmp /= 10;
-		}
+		i += print_num(num);
 	}
 	return (i);
 }
