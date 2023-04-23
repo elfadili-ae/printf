@@ -31,4 +31,7 @@ int print_num(unsigned int n);
 int octal_print(va_list arg);
 int hexa_print(va_list arg);
 int upHexa_print(va_list arg);
+int binary_print(va_list arg);
+int base_converter(unsigned long int num, int base);
+int unsigned_print(va_list arg);
 #endif

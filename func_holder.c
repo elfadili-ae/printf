@@ -57,3 +57,16 @@ int int_print(va_list arg)
 	i += print_num(tmp);
 	return (i);
 }
+/**
+ * unsigned_print - print unsigned integer
+ * @arg: va_list argument
+ * Return: printed char count
+ */
+int unsigned_print(va_list arg)
+{
+	int i = 0;
+	unsigned int num = va_arg(arg, unsigned int);
+
+	i += print_num(num);
+	return (i);
+}
