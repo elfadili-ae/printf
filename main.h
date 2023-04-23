@@ -28,4 +28,7 @@ int buffChecker(char *buff, int i);
 int _strcpy(char *dest, char *src, int i);
 int flagIt(const char *str, int i);
 int print_num(unsigned int n);
+int octal_print(va_list arg);
+int hexa_print(va_list arg);
+int upHexa_print(va_list arg);
 #endif

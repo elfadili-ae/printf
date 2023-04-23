@@ -16,6 +16,11 @@ int (*get_fun(char c))(va_list)
 		{'s', string_print},
 		{'d', int_print},
 		{'i', int_print},
+		{'b', binary_print},
+		{'u', unsigned_print},
+		{'o', octal_print},
+		{'x', hexa_print},
+		{'X', upHexa_print},
 		{'\0', NULL}
 	};
 
