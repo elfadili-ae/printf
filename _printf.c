@@ -32,7 +32,7 @@ int (*get_fun(char c))(va_list)
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i, Count = 0, false_flag = 0;
+	unsigned int i, Count = 0;
 	int (*fun)(va_list);
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -42,25 +42,23 @@ int _printf(const char *format, ...)
 	va_start(arguments, format);
 	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%' && false_flag == 0)
+		if (format[i] == '%')
 		{
-			if (get_fun(format[i + 1]))
-			{
-				fun = get_fun(format[i + 1]);
-				Count = fun(arguments);
-				i++;
-			}
+			i++;
+			if (format[i] == '%')
+				Count += _putchar(format[i]);
+			i = flagIt(format, i);
+
+			fun = get_fun(format[i]);
+			if (fun)
+				Count += fun(arguments);
 			else
 			{
-				false_flag = 1; /*false specifier*/
-				i--;
+				Count += _putchar('%');
+				Count += _putchar(format[i]);
 			}
-		}
-		else
-		{
-			false_flag = 0;
+		} else
 			Count += _putchar(format[i]);
-		}
 	}
 	va_end(arguments);
 	return (Count);

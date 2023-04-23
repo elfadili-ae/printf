@@ -6,19 +6,18 @@
 /**
  * char_print - print a character
  * @arg: va_list argument
- * @i: index int string
  * Return: new index
  */
 int char_print(va_list arg)
 {
 	char c = va_arg(arg, int);
+
 	return (_putchar(c));
 }
 
 /**
  * string_print - print a character
  * @arg: va_list argument
- * @i: index int string
  * Return: new index
  */
 int string_print(va_list arg)

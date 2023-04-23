@@ -25,4 +25,5 @@ int int_print(va_list args);
 void buffReset(char *buff, int i);
 int buffChecker(char *buff, int i);
 int _strcpy(char *dest, char *src, int i);
+int flagIt(const char *str, int i);
 #endif
