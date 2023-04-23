@@ -39,9 +39,7 @@ int string_print(va_list arg)
 /**
  * int_print - print integer
  * @arg: va_list argument
- * @buff: string pointer
- * @i: index in string
- * Return: new index
+ * Return: printed char count
  */
 int int_print(va_list arg)
 {
