@@ -46,7 +46,10 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == '%')
+			{
 				Count += _putchar(format[i]);
+				continue;
+			}
 			i = flagIt(format, i);
 
 			fun = get_fun(format[i]);
