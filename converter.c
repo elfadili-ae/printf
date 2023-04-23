@@ -25,11 +25,9 @@ int base_converter(unsigned long int num, int base)
 			if (num > 0)
 			{
 				i += base_converter(num / 8, 8);
-				r = num % 2;
+				r = num % 8;
 				i += _putchar(r + '0');
 			}
-			else if (num == 0)
-				i += _putchar(r + '0');
 			break;
 		case 16:
 			break;

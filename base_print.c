@@ -5,9 +5,15 @@
  * @arg: argument
  * Return: digit counter
  */
-int octal_print(__attribute__((unused)) va_list arg)
+int octal_print(va_list arg)
 {
 	int i = 0;
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num != 0)
+		i += base_converter(num, 8);
+	else
+		i += _putchar('0');
 
 	return (i);
 }
