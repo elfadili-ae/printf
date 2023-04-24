@@ -71,7 +71,7 @@ int unsigned_print(va_list arg)
 	return (i);
 }
 /**
- * bigS - print string
+ * bigS_print - print string
  * and change special ASCII char to \x
  * @arg: va_list argument
  * Return: printed char count
