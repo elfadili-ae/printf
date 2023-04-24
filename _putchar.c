@@ -15,10 +15,11 @@ int _putchar(char c)
 	{
 		write(1, buff, index);
 		index = 0;
-		return (0);
 	}
 	if (c != -1)
+	{
 		buff[index] = c;
-	index++;
+		index++;
+	}
 	return (1);
 }
