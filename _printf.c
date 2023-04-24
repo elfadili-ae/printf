@@ -71,6 +71,7 @@ int _printf(const char *format, ...)
 			Count += _putchar(format[i]);
 	}
 
+	_putchar(-1);
 	va_end(arguments);
 	return (Count);
 }
