@@ -21,6 +21,7 @@ int (*get_fun(char c))(va_list)
 		{'o', octal_print},
 		{'x', hexa_print},
 		{'X', upHexa_print},
+		{'S', bigS_print},
 		{'\0', NULL}
 	};
 
