@@ -71,36 +71,36 @@ int unsigned_print(va_list arg)
 	return (i);
 }
 /**
-  * bigS - print string
-  * and change special ASCII char to \x
-  * @arg: va_list argument
-  * Return: printed char count
-  */
+ * bigS - print string
+ * and change special ASCII char to \x
+ * @arg: va_list argument
+ * Return: printed char count
+ */
 int bigS_print(va_list arg)
 {
-        char *str;
-        int y, c = 0;
+	char *str;
+	int y, c = 0;
 
-        str = va_arg(arg, char *);
-        if (str == NULL)
-                str = "(null)";
+	str = va_arg(arg, char *);
+	if (str == NULL)
+		str = "(null)";
 
-        for (y = 0; str[y] != '\0'; y++)
-        {
-                if (str[y] >= 32 && str[y] < 127)
-                        c += _putchar(str[y]);
-                else
-                {
-                        c += _putchar('\\');
-                        c += _putchar('x');
-                        if (base_converter(str[y], 16, 1, 0) == 1)
-                        {
-                                _putchar(0 + '0');
-                                base_converter(str[y], 16, 1, 1);
-                        }
-                        else
-                                base_converter(str[y], 16, 1, 1);
-                }
-        }
-        return (c);
+	for (y = 0; str[y] != '\0'; y++)
+	{
+		if (str[y] >= 32 && str[y] < 127)
+			c += _putchar(str[y]);
+		else
+		{
+			c += _putchar('\\');
+			c += _putchar('x');
+			if (base_converter(str[y], 16, 1, 0) == 1)
+			{
+				c += _putchar('0');
+				c += base_converter(str[y], 16, 1, 1);
+			}
+			else
+				c += base_converter(str[y], 16, 1, 1);
+		}
+	}
+	return (c);
 }
