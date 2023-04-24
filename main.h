@@ -23,8 +23,6 @@ int _printf(const char *format, ...);
 int char_print(va_list args);
 int string_print(va_list args);
 int int_print(va_list args);
-void buffReset(char *buff, int i);
-int buffChecker(char *buff, int i);
 int _strcpy(char *dest, char *src, int i);
 int flagIt(const char *str, int i);
 int print_num(unsigned int n);
@@ -32,6 +30,6 @@ int octal_print(va_list arg);
 int hexa_print(va_list arg);
 int upHexa_print(va_list arg);
 int binary_print(va_list arg);
-int base_converter(unsigned long int num, int base);
+int base_converter(unsigned long int num, int base, int _case);
 int unsigned_print(va_list arg);
 #endif

@@ -13,7 +13,6 @@ int _strcpy(char *dest, char *src, int i)
 
 	for (j = 0; src[j] != '\0'; j++)
 	{
-		i = buffChecker(dest, i);
 		dest[i] = src[j];
 		i++;
 	}
