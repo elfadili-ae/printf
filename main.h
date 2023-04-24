@@ -33,4 +33,5 @@ int binary_print(va_list arg);
 int base_converter(unsigned long int num, int base, int _case, int print);
 int unsigned_print(va_list arg);
 int bigS_print(va_list arg);
+int pointer_print(va_list arg);
 #endif

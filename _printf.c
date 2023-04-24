@@ -22,6 +22,7 @@ int (*get_fun(char c))(va_list)
 		{'x', hexa_print},
 		{'X', upHexa_print},
 		{'S', bigS_print},
+		{'p', pointer_print},
 		{'\0', NULL}
 	};
 
