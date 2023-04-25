@@ -62,12 +62,12 @@ int int_print(va_list arg, flag_t *flag)
 		if (flag->pflag == 1)
 		{
 			i += _putchar('+');
-			flag->hflag = 0;
+			flag->pflag = 0;
 		}
 		else if (flag->sflag == 1)
 		{
 			i += _putchar(' ');
-			flag->hflag = 0;
+			flag->sflag = 0;
 		}
 	}
 
