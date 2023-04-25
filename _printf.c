@@ -23,6 +23,7 @@ int (*get_fun(char c))(va_list, flag_t *)
 		{'X', upHexa_print},
 		{'S', bigS_print},
 		{'p', pointer_print},
+		{'r', print_rev},
 		{'\0', NULL}
 	};
 	for (j = 0; _funcs[j].spec != '\0'; j++)
@@ -64,7 +65,7 @@ int _printf(const char *format, ...)
 			fun = get_fun(format[i]);
 			if (fun)
 				Count += fun(arguments, &flags);
-			else
+			else if (flagChecker(&flags))
 			{
 				Count += _putchar('%');
 				Count += _putchar(format[i]);
