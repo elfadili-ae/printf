@@ -61,11 +61,12 @@ int int_print(va_list arg, flag_t *flag)
 		tmp = num;
 		if (flag->pflag == 1)
 			i += _putchar('+');
+		else if (flag->sflag == 1)
+			i += _putchar(' ');
 	}
 
 	i += print_num(tmp);
 
-	(void)flag;
 	return (i);
 }
 /**
@@ -79,10 +80,9 @@ int unsigned_print(va_list arg, flag_t *flag)
 	int i = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (flag->pflag == 1)
-		i += _putchar('+');
 	i += print_num(num);
 
+	(void)flag;
 	return (i);
 }
 /**
