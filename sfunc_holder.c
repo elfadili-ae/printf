@@ -36,30 +36,21 @@ int print_rev(va_list arg, flag_t *flag)
 {
 	char *s;
 	int length = 0;
-	int r, c = 0, y;
+	int r, c = 0;
 
-	if (flag->zflag == 0)
+	s = va_arg(arg, char *);
+	while (*s != '\0')
 	{
-		s = va_arg(arg, char *);
-		while (*s != '\0')
-		{
-			length++;
-			s++;
-		}
-		s--;
-		for (r = length; r > 0; r--)
-		{
-			c += _putchar(*s);
-			s--;
-		}
-	} else
-	{
-		c += _putchar('%');
-		for (y = 0; y < flag->zflag; y++)
-			c += _putchar('0');
-		flag->zflag = 0;
-		c += _putchar('r');
+		length++;
+		s++;
 	}
+	s--;
+	for (r = length; r > 0; r--)
+	{
+		c += _putchar(*s);
+		s--;
+	}
+	(void)flag;
 	return (c);
 }
 /**
@@ -71,40 +62,31 @@ int print_rev(va_list arg, flag_t *flag)
 int rot13(va_list arg, flag_t *flag)
 {
 	char *s = va_arg(arg, char *), n[] = "(null)";
-	int i, j, c = 0, y;
+	int i, j, c = 0;
 	char a[] = "abcdefghijklmnopqrstuvwxyzABDCEFGHIJKLMNOPQRSTUVWXYZ";
 	char r[] = "nopqrstuvwxyzabcdefghijklmNOQPRSTUVWXYZABCDEFGHIJKLM";
 
-	if (flag->zflag == 0)
+	if (!s)
 	{
-		if (!s)
-		{
-			for (; n[c]; c++)
-				_putchar(s[c]);
-			return (c);
-		}
-		for (i = 0; s[i] != '\0'; i++)
-		{
-			if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
-			{
-				for (j = 0; a[j] != '\0'; j++)
-				{
-					if (s[i] == a[j])
-					{
-						c += _putchar(r[j]);
-						break;
-					}
-				}
-			} else
-				c += _putchar(s[i]);
-		}
-	} else
-	{
-		c += _putchar('%');
-		for (y = 0; y < flag->zflag; y++)
-			c += _putchar('0');
-		flag->zflag = 0;
-		c += _putchar('R');
+		for (; n[c]; c++)
+			_putchar(s[c]);
+		return (c);
 	}
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		{
+			for (j = 0; a[j] != '\0'; j++)
+			{
+				if (s[i] == a[j])
+				{
+					c += _putchar(r[j]);
+					break;
+				}
+			}
+		} else
+			c += _putchar(s[i]);
+	}
+	(void)flag;
 	return (c);
 }
