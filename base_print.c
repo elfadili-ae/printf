@@ -14,12 +14,14 @@ int octal_print(va_list arg, flag_t *flag)
 	if (num != 0)
 	{
 		if (flag->hflag == 1)
+		{
 			i += _putchar('0');
+			flag->hflag = 0;
+		}
 		i += base_converter(num, 8, -1, 0);
 	}
 	else
 		i += _putchar('0');
-	(void)flag;
 	return (i);
 }
 
@@ -37,13 +39,15 @@ int hexa_print(va_list arg, flag_t *flag)
 	if (num != 0)
 	{
 		if (flag->hflag == 1)
+		{
 			i += _puts("0x");
+			flag->hflag = 0;
+		}
 		i += base_converter(num, 16, 0, 1);
 	}
 	else
 		i += _putchar('0');
 
-	(void)flag;
 	return (i);
 }
 /**
@@ -60,13 +64,15 @@ int upHexa_print(va_list arg, flag_t *flag)
 	if (num != 0)
 	{
 		if (flag->hflag == 1)
+		{
 			i += _puts("0X");
+			flag->hflag = 0;
+		}
 		i += base_converter(num, 16, 1, 1);
 	}
 	else
 		i += _putchar('0');
 
-	(void)flag;
 	return (i);
 }
 /**

@@ -60,9 +60,15 @@ int int_print(va_list arg, flag_t *flag)
 	{
 		tmp = num;
 		if (flag->pflag == 1)
+		{
 			i += _putchar('+');
+			flag->hflag = 0;
+		}
 		else if (flag->sflag == 1)
+		{
 			i += _putchar(' ');
+			flag->hflag = 0;
+		}
 	}
 
 	i += print_num(tmp);
