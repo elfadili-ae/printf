@@ -24,6 +24,7 @@ int (*get_fun(char c))(va_list, flag_t *)
 		{'S', bigS_print},
 		{'p', pointer_print},
 		{'r', print_rev},
+		{'R', rot13},
 		{'\0', NULL}
 	};
 	for (j = 0; _funcs[j].spec != '\0'; j++)

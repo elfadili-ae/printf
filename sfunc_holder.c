@@ -53,3 +53,39 @@ int print_rev(va_list arg, flag_t *flag)
 	(void)flag;
 	return (c);
 }
+/**
+ * rot13 - encode a string by using rot13
+ * @arg: va_list argument
+ * @flag: unused
+ * Return: character count
+ */
+int rot13(va_list arg, flag_t *flag)
+{
+	char *s = va_arg(arg, char *), n[] = "(null)";
+	int i, j, c = 0;
+	char a[] = "abcdefghijklmnopqrstuvwxyzABDCEFGHIJKLMNOPQRSTUVWXYZ";
+	char r[] = "nopqrstuvwxyzabcdefghijklmNOQPRSTUVWXYZABCDEFGHIJKLM";
+
+	if (!s)
+	{
+		for (; n[c]; c++)
+			_putchar(s[c]);
+		return (c);
+	}
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		{
+			for (j = 0; a[j] != '\0'; j++)
+			{
+				if (s[i] == a[j])
+				{
+					c += _putchar(r[j]);
+					break;
+				}
+			}
+		} else
+			c += _putchar(s[i]);
+	} (void) flag;
+	return (c);
+}
