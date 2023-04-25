@@ -107,24 +107,32 @@ int bigS_print(va_list arg, flag_t *flag)
 	if (str == NULL)
 		str = "(null)";
 
-	for (y = 0; str[y] != '\0'; y++)
+	if (flag->zflag == 0)
 	{
-		if (str[y] >= 32 && str[y] < 127)
-			c += _putchar(str[y]);
-		else
+		for (y = 0; str[y] != '\0'; y++)
 		{
-			c += _putchar('\\');
-			c += _putchar('x');
-			if (base_converter(str[y], 16, 1, 0) == 1)
-			{
-				c += _putchar('0');
-				c += base_converter(str[y], 16, 1, 1);
-			}
+			if (str[y] >= 32 && str[y] < 127)
+				c += _putchar(str[y]);
 			else
-				c += base_converter(str[y], 16, 1, 1);
+			{
+				c += _putchar('\\');
+				c += _putchar('x');
+				if (base_converter(str[y], 16, 1, 0) == 1)
+				{
+					c += _putchar('0');
+					c += base_converter(str[y], 16, 1, 1);
+				} else
+					c += base_converter(str[y], 16, 1, 1);
+			}
 		}
+	} else
+	{
+		c += _putchar('%');
+		for (y = 0; y < flag->zflag; y++)
+			c += _putchar('0');
+		flag->zflag = 0;
+		c += _putchar('S');
 	}
 
-	(void)flag;
 	return (c);
 }

@@ -16,7 +16,7 @@ int flagIt(const char *s, int i, flag_t *flag)
 	else if (s[i] == '#')
 		flag->hflag = 1;
 	else if (s[i] == '0')
-		flag->zflag = 1;
+		flag->zflag += 1;
 	else
 		return (0);
 	return (1);

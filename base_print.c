@@ -83,14 +83,23 @@ int upHexa_print(va_list arg, flag_t *flag)
   */
 int binary_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, y;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (num != 0)
-		i += base_converter(num, 2, -1, 0);
+	if (flag->zflag == 0)
+	{
+		if (num != 0)
+			i += base_converter(num, 2, -1, 0);
+		else
+			i += _putchar('0');
+	}
 	else
-		i += _putchar('0');
-
-	(void)flag;
+	{
+		i += _putchar('%');
+		for (y = 0; y < flag->zflag; y++)
+			i += _putchar('0');
+		flag->zflag = 0;
+		i += _putchar('b');
+	}
 	return (i);
 }
