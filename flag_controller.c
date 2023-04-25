@@ -26,7 +26,7 @@ int flagIt(const char *s, int i, flag_t *flag)
  */
 int flagChecker(flag_t *flag)
 {
-	if ( flag->sflag != 0 || flag->pflag != 0 || flag->hflag != 0)
+	if (flag->sflag != 0 || flag->pflag != 0 || flag->hflag != 0)
 		return (0);
 	return (1);
 }
