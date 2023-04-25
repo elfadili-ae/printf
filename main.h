@@ -19,6 +19,7 @@ typedef struct flags
 	int pflag;
 	int hflag;
 	int zflag;
+	int zpadder;
 } flag_t;
 
 /**
@@ -55,4 +56,6 @@ int flagChecker(flag_t *flag);
 int rot13(va_list arg, flag_t *);
 void flagReset(flag_t *flag);
 int oo7_print(va_list arg, flag_t *flag);
+int _atoi(char s);
+int countDigit(unsigned long int num);
 #endif

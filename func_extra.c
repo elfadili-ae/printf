@@ -37,3 +37,33 @@ int print_num(unsigned int n)
 		i += _putchar((n % 10) + '0');
 	return (i);
 }
+/**
+ * _atoi - character to string
+ *@s: character to convert
+ *Return: return integer | 0 (empty strin)
+ */
+int _atoi(char s)
+{
+	int num;
+
+	if (s >= '0' && s <= '9')
+		num = s - 48;
+	return (num);
+}
+/**
+ * countDigit - count a numbers digits
+ * @num: number
+ * Return: number of digits
+ */
+int countDigit(unsigned long int num)
+{
+	int digit = 0;
+
+	while (num != 0)
+	{
+		num /= 10;
+		digit++;
+	}
+
+	return (digit);
+}

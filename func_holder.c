@@ -48,8 +48,10 @@ int string_print(va_list arg, flag_t *flag)
  */
 int int_print(va_list arg, flag_t *flag)
 {
-	int i = 0, num = va_arg(arg, int);
+	int i = 0, j, digit, num = va_arg(arg, int);
 	unsigned int tmp;
+
+	digit = countDigit(num);
 
 	if (num < 0)
 	{
@@ -70,7 +72,15 @@ int int_print(va_list arg, flag_t *flag)
 			flagReset(flag);
 		}
 	}
-
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j > 0)
+		{
+			i += _putchar('0');
+			j--;
+		}
+	}
 	i += print_num(tmp);
 
 	return (i);
@@ -83,9 +93,19 @@ int int_print(va_list arg, flag_t *flag)
  */
 int unsigned_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, j, digit;
 	unsigned int num = va_arg(arg, unsigned int);
 
+	digit = countDigit(num);
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j > 0)
+		{
+			i += _putchar('0');
+			j--;
+		}
+	}
 	i += print_num(num);
 
 	(void)flag;

@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 	va_list arguments;
 	unsigned int i, Count = 0;
 	int (*fun)(va_list, flag_t *);
-	flag_t flags = {0, 0, 0, 0};
+	flag_t flags = {0, 0, 0, 0, 0};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
@@ -75,7 +75,6 @@ int _printf(const char *format, ...)
 		} else
 			Count += _putchar(format[i]);
 	}
-
 	_putchar(-1);
 	va_end(arguments);
 	return (Count);
