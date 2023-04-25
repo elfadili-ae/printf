@@ -49,4 +49,5 @@ int unsigned_print(va_list arg, flag_t *);
 int bigS_print(va_list arg, flag_t *);
 int pointer_print(va_list arg, flag_t *);
 int print_rev(va_list arg, flag_t *);
+int flagChecker(flag_t *flag);
 #endif

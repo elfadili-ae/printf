@@ -57,7 +57,11 @@ int int_print(va_list arg, flag_t *flag)
 		tmp = -num;
 	}
 	else
+	{
 		tmp = num;
+		if (flag->pflag == 1)
+			i += _putchar('+');
+	}
 
 	i += print_num(tmp);
 

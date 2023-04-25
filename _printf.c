@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 			fun = get_fun(format[i]);
 			if (fun)
 				Count += fun(arguments, &flags);
-			else
+			else if (flagChecker(&flags))
 			{
 				Count += _putchar('%');
 				Count += _putchar(format[i]);
