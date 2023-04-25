@@ -15,6 +15,8 @@ int flagIt(const char *s, int i, flag_t *flag)
 		flag->pflag = 1;
 	else if (s[i] == '#')
 		flag->hflag = 1;
+	else if (s[i] == '0')
+		flag->zflag = 1;
 	else
 		return (0);
 	return (1);
@@ -26,7 +28,8 @@ int flagIt(const char *s, int i, flag_t *flag)
  */
 int flagChecker(flag_t *flag)
 {
-	if (flag->sflag != 0 || flag->pflag != 0 || flag->hflag != 0)
+	if (flag->sflag != 0 || flag->pflag != 0 || flag->hflag != 0 ||
+		flag->zflag != 0)
 		return (0);
 	return (1);
 }
@@ -39,4 +42,5 @@ void flagReset(flag_t *flag)
 	flag->sflag = 0;
 	flag->pflag = 0;
 	flag->hflag = 0;
+	flag->zflag = 0;
 }
