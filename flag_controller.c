@@ -30,3 +30,13 @@ int flagChecker(flag_t *flag)
 		return (0);
 	return (1);
 }
+/**
+  * flagReset - Reset the flag
+  * @flag: flag var
+  */
+void flagReset(flag_t *flag)
+{
+	flag->sflag = 0;
+	flag->pflag = 0;
+	flag->hflag = 0;
+}
