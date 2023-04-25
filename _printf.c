@@ -8,7 +8,7 @@
  * @c: specifier
  * Return: Function
  */
-int (*get_fun(char c))(va_list)
+int (*get_fun(char c))(va_list, flag_t *)
 {
 	int j;
 	func_t _funcs[] = {
@@ -25,7 +25,6 @@ int (*get_fun(char c))(va_list)
 		{'p', pointer_print},
 		{'\0', NULL}
 	};
-
 	for (j = 0; _funcs[j].spec != '\0'; j++)
 	{
 		if (_funcs[j].spec == c)
@@ -42,7 +41,8 @@ int _printf(const char *format, ...)
 {
 	va_list arguments;
 	unsigned int i, Count = 0;
-	int (*fun)(va_list);
+	int (*fun)(va_list, flag_t *);
+	flag_t flags = {0, 0, 0};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
@@ -59,11 +59,11 @@ int _printf(const char *format, ...)
 				Count += _putchar(format[i]);
 				continue;
 			}
-			i = flagIt(format, i);
-
+			while (flagIt(format, i, &flags))
+				i++;
 			fun = get_fun(format[i]);
 			if (fun)
-				Count += fun(arguments);
+				Count += fun(arguments, &flags);
 			else
 			{
 				Count += _putchar('%');

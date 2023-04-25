@@ -3,9 +3,10 @@
 /**
  * pointer_print - print the adres of the pointer variable
  * @arg: argument that holds the adress
+ * @flag: flags holder
  * Return: the number of characters printed
  */
-int pointer_print(va_list arg)
+int pointer_print(va_list arg, flag_t *flag)
 {
 	int c = 0;
 	unsigned long int addr = va_arg(arg, unsigned long int);
@@ -22,5 +23,6 @@ int pointer_print(va_list arg)
 		c += base_converter(addr, 16, 0, 1);
 	}
 
+	(void)flag;
 	return (c);
 }

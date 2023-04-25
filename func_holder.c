@@ -6,21 +6,24 @@
 /**
  * char_print - print a character
  * @arg: va_list argument
+ * @flag: flags holder
  * Return: new index
  */
-int char_print(va_list arg)
+int char_print(va_list arg, flag_t *flag)
 {
 	char c = va_arg(arg, int);
 
+	(void)flag;
 	return (_putchar(c));
 }
 
 /**
  * string_print - print a character
  * @arg: va_list argument
+ * @flag: flags holder
  * Return: new index
  */
-int string_print(va_list arg)
+int string_print(va_list arg, flag_t *flag)
 {
 	char *str;
 	int y, c = 0;
@@ -34,14 +37,16 @@ int string_print(va_list arg)
 		c += _putchar(str[y]);
 	}
 
+	(void) flag;
 	return (c);
 }
 /**
  * int_print - print integer
  * @arg: va_list argument
+ * @flag: flags holder
  * Return: printed char count
  */
-int int_print(va_list arg)
+int int_print(va_list arg, flag_t *flag)
 {
 	int i = 0, num = va_arg(arg, int);
 	unsigned int tmp;
@@ -55,28 +60,34 @@ int int_print(va_list arg)
 		tmp = num;
 
 	i += print_num(tmp);
+
+	(void)flag;
 	return (i);
 }
 /**
  * unsigned_print - print unsigned integer
  * @arg: va_list argument
+ * @flag: flags holder
  * Return: printed char count
  */
-int unsigned_print(va_list arg)
+int unsigned_print(va_list arg, flag_t *flag)
 {
 	int i = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
 	i += print_num(num);
+
+	(void)flag;
 	return (i);
 }
 /**
  * bigS_print - print string
  * and change special ASCII char to \x
  * @arg: va_list argument
+ * @flag: flags holder
  * Return: printed char count
  */
-int bigS_print(va_list arg)
+int bigS_print(va_list arg, flag_t *flag)
 {
 	char *str;
 	int y, c = 0;
@@ -102,5 +113,7 @@ int bigS_print(va_list arg)
 				c += base_converter(str[y], 16, 1, 1);
 		}
 	}
+
+	(void)flag;
 	return (c);
 }
