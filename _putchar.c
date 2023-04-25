@@ -23,3 +23,18 @@ int _putchar(char c)
 	}
 	return (1);
 }
+/**
+ * _puts - print a string
+ * @s: string to print
+ * Return: printed char count
+ */
+int _puts(char *s)
+{
+	int c = 0;
+
+	while (s[c] != '\0')
+	{
+		c += _putchar(s[c]);
+	}
+	return (c);
+}

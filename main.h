@@ -32,6 +32,7 @@ typedef struct func_t
 	int (*f)(va_list, flag_t *);
 } func_t;
 
+int _puts(char *s);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int char_print(va_list args, flag_t *);
