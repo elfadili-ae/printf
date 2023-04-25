@@ -26,3 +26,29 @@ int pointer_print(va_list arg, flag_t *flag)
 	(void)flag;
 	return (c);
 }
+/**
+  * print_rev - Print a string in reverse
+  * @arg: va_list argument
+  * Return: character count
+  */
+int print_rev(va_list arg, flag_t *flag)
+{
+        char *s;
+        int length = 0;
+        int r, c = 0;
+
+        s = va_arg(arg, char *);
+        while (*s != '\0')
+        {
+                length++;
+                s++;
+        }
+        s--;
+        for (r = length; r > 0; r--)
+        {
+                c += _putchar(*s);
+                s--;
+        }
+	(void)flag;
+        return (c);
+}

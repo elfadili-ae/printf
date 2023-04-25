@@ -48,4 +48,5 @@ int base_converter(unsigned long int num, int base, int _case, int print);
 int unsigned_print(va_list arg, flag_t *);
 int bigS_print(va_list arg, flag_t *);
 int pointer_print(va_list arg, flag_t *);
+int print_rev(va_list arg, flag_t *);
 #endif
