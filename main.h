@@ -53,4 +53,5 @@ int print_rev(va_list arg, flag_t *);
 int flagChecker(flag_t *flag);
 int rot13(va_list arg, flag_t *);
 void flagReset(flag_t *flag);
+int oo7_print(va_list arg, flag_t *flag);
 #endif

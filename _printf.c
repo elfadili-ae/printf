@@ -14,6 +14,7 @@ int (*get_fun(char c))(va_list, flag_t *)
 	func_t _funcs[] = {
 		{'c', char_print},
 		{'s', string_print},
+		{'%', oo7_print},
 		{'d', int_print},
 		{'i', int_print},
 		{'b', binary_print},
@@ -78,4 +79,20 @@ int _printf(const char *format, ...)
 	_putchar(-1);
 	va_end(arguments);
 	return (Count);
+}
+/**
+ * oo7_print - print double-oh-seven
+ * @arg: argument
+ * @flag: flag holder
+ * Return: 1 for printed char
+ */
+int oo7_print(va_list arg, flag_t *flag)
+{
+	int c = 0;
+
+	c += _putchar('%');
+	flagReset(flag);
+
+	(void)arg;
+	return (c);
 }
