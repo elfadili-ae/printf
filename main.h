@@ -8,24 +8,24 @@
 #include <limits.h>
 
 /**
- * flags - specifier flags
+ * struct flags - specifier flags
  * @sflag: space flag
  * @pflag: plus flag (+)
  * @hflag: hash flag (#)
  */
 typedef struct flags
 {
-        int sflag;
+	int sflag;
 	int pflag;
 	int hflag;
 } flag_t;
 
 /**
-  * struct func_t - specifier function
-  * @spec: specifier
-  * @f: function to call
-  * Description: a struct type to call a function based on the specifier
-  */
+ * struct func_t - specifier function
+ * @spec: specifier
+ * @f: function to call
+ * Description: a struct type to call a function based on the specifier
+ */
 typedef struct func_t
 {
 	char spec;
