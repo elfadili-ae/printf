@@ -18,6 +18,7 @@ typedef struct flags
 	int sflag;
 	int pflag;
 	int hflag;
+	int zflag;
 } flag_t;
 
 /**
