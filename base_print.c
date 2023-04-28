@@ -18,6 +18,11 @@ int octal_print(va_list arg, flag_t *flag)
 		i += _putchar('0');
 		digit++;
 	}
+	if (num == 0)
+	{
+		i += _putchar('0');
+		digit++;
+	}
 	if (flag->zflag == 1)
 	{
 		j = flag->zpadder - digit;
@@ -46,6 +51,11 @@ int hexa_print(va_list arg, flag_t *flag)
 		i += _puts("0x");
 		digit += 2;
 	}
+	if (num == 0)
+	{
+		i += _putchar('0');
+		digit++;
+	}
 	if (flag->zflag == 1)
 	{
 		j = flag->zpadder - digit;
@@ -73,6 +83,11 @@ int upHexa_print(va_list arg, flag_t *flag)
 		i += _puts("0X");
 		digit += 2;
 	}
+	if (num == 0)
+	{
+		i += _putchar('0');
+		digit++;
+	}
 	if (flag->zflag == 1)
 	{
 		j = flag->zpadder - digit;
@@ -80,7 +95,6 @@ int upHexa_print(va_list arg, flag_t *flag)
 			i += _putchar('0');
 	}
 	i += hexa_convert(num, 1, 1);
-
 
 	return (i);
 }
@@ -92,14 +106,23 @@ int upHexa_print(va_list arg, flag_t *flag)
   */
 int binary_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, j = 0, digit = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (num != 0)
-		i += base_converter(num, 2, -1, 1);
-	else
-		i += _putchar('0');
+	digit = base_converter(num, 2, -1, 0);
 
-	(void)flag;
+	if (num == 0)
+	{
+		i += _putchar('0');
+		digit++;
+	}
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j-- > 0)
+			i += _putchar('0');
+	}
+	i += base_converter(num, 2, -1, 1);
+
 	return (i);
 }
