@@ -116,12 +116,12 @@ int binary_print(va_list arg, flag_t *flag)
 		i += _putchar('0');
 		digit++;
 	}
-	if (flag->zflag == 1)
-	{
-		j = flag->zpadder - digit;
-		while (j-- > 0)
-			i += _putchar('0');
-	}
+/*if (flag->zflag == 1)
+  {
+  j = flag->zpadder - digit;
+  while (j-- > 0)
+  i += _putchar('0');
+  }*/
 	i += base_converter(num, 2, -1, 1);
 
 	return (i);
