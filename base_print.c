@@ -13,7 +13,7 @@ int octal_print(va_list arg, flag_t *flag)
 
 	digit = base_converter(num, 8, -1, 0);
 
-	if (flag->hflag == 1)
+	if (flag->hflag == 1 && num != 0)
 	{
 		i += _putchar('0');
 		digit++;
