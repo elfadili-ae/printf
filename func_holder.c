@@ -65,7 +65,7 @@ int int_print(va_list arg, flag_t *flag)
 		i += _putchar('+');
 		flagReset(flag);
 	}
-	else if (flag->sflag == 1)
+	else if (flag->sflag == 1 && !isNegative)
 	{
 		i += _putchar(' ');
 		flagReset(flag);
