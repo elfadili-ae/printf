@@ -18,11 +18,14 @@ int pointer_print(va_list arg, flag_t *flag)
 			c += _putchar(nil[c]);
 	else
 	{
+		if (flag->pflag == 1)
+			c += _putchar('+');
+		else if (flag->sflag == 1)
+			c += _putchar(' ');
 		c += _puts("0x");
 		c += hexa_convert(addr, 0, 1);
 	}
 
-	(void)flag;
 	return (c);
 }
 /**
