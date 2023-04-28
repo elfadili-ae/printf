@@ -106,23 +106,14 @@ int upHexa_print(va_list arg, flag_t *flag)
   */
 int binary_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j = 0, digit = 0;
+	int i = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	digit = base_converter(num, 2, -1, 0);
-
 	if (num == 0)
-	{
 		i += _putchar('0');
-		digit++;
-	}
-/*if (flag->zflag == 1)
-  {
-  j = flag->zpadder - digit;
-  while (j-- > 0)
-  i += _putchar('0');
-  }*/
+
 	i += base_converter(num, 2, -1, 1);
 
+	(void)flag;
 	return (i);
 }
