@@ -13,7 +13,7 @@ int pointer_print(va_list arg, flag_t *flag)
 	char *nil = "(nil)";
 
 
-	if (base_converter(addr, 16, 0, 0) == 0)
+	if (hexa_convert(addr, 0, 0) == 0)
 		while (nil[c])
 			c += _putchar(nil[c]);
 	else

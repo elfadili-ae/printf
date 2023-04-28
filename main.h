@@ -48,6 +48,7 @@ int hexa_print(va_list arg, flag_t *);
 int upHexa_print(va_list arg, flag_t *);
 int binary_print(va_list arg, flag_t *);
 int base_converter(unsigned long int num, int base, int _case, int print);
+int hexa_convert(unsigned long int num, int _case, int print);
 int unsigned_print(va_list arg, flag_t *);
 int bigS_print(va_list arg, flag_t *);
 int pointer_print(va_list arg, flag_t *);
@@ -57,5 +58,5 @@ int rot13(va_list arg, flag_t *);
 void flagReset(flag_t *flag);
 int oo7_print(va_list arg, flag_t *flag);
 int _atoi(char s);
-int countDigit(unsigned long int num);
+int countDigit(unsigned long int num, int isNegative);
 #endif

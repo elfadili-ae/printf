@@ -8,20 +8,24 @@
  */
 int octal_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, digit = 0, j = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (num != 0)
+	digit = base_converter(num, 8, -1, 0);
+
+	if (flag->hflag == 1)
 	{
-		if (flag->hflag == 1)
-		{
-			i += _putchar('0');
-			flagReset(flag);
-		}
-		i += base_converter(num, 8, -1, 0);
-	}
-	else
 		i += _putchar('0');
+		digit++;
+	}
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j-- > 0)
+			i += _putchar('0');
+	}
+	i += base_converter(num, 8, -1, 1);
+
 	return (i);
 }
 
@@ -33,20 +37,22 @@ int octal_print(va_list arg, flag_t *flag)
  */
 int hexa_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, j = 0, digit = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (num != 0)
+	digit = hexa_convert(num, -1, 0);
+	if (flag->hflag == 1)
 	{
-		if (flag->hflag == 1)
-		{
-			i += _puts("0x");
-			flagReset(flag);
-		}
-		i += base_converter(num, 16, 0, 1);
+		i += _puts("0x");
+		digit += 2;
 	}
-	else
-		i += _putchar('0');
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j-- > 0)
+			i += _putchar('0');
+	}
+	i += hexa_convert(num, 0, 1);
 
 	return (i);
 }
@@ -58,20 +64,23 @@ int hexa_print(va_list arg, flag_t *flag)
  */
 int upHexa_print(va_list arg, flag_t *flag)
 {
-	int i = 0;
+	int i = 0, j = 0, digit = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	if (num != 0)
+	digit = hexa_convert(num, -1, 0);
+	if (flag->hflag == 1)
 	{
-		if (flag->hflag == 1)
-		{
-			i += _puts("0X");
-			flagReset(flag);
-		}
-		i += base_converter(num, 16, 1, 1);
+		i += _puts("0X");
+		digit += 2;
 	}
-	else
-		i += _putchar('0');
+	if (flag->zflag == 1)
+	{
+		j = flag->zpadder - digit;
+		while (j-- > 0)
+			i += _putchar('0');
+	}
+	i += hexa_convert(num, 1, 1);
+
 
 	return (i);
 }

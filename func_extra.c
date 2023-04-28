@@ -53,17 +53,22 @@ int _atoi(char s)
 /**
  * countDigit - count a numbers digits
  * @num: number
+ * @isNegative: 1 (negative) 0 (positive)
  * Return: number of digits
  */
-int countDigit(unsigned long int num)
+int countDigit(unsigned long int num, int isNegative)
 {
 	int digit = 0;
 
+	if (isNegative)
+		digit++;
 	while (num != 0)
 	{
 		num /= 10;
 		digit++;
 	}
+	if (digit == 0)
+		return (1);
 
 	return (digit);
 }

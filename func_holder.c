@@ -49,28 +49,25 @@ int string_print(va_list arg, flag_t *flag)
 int int_print(va_list arg, flag_t *flag)
 {
 	int i = 0, j, digit, num = va_arg(arg, int);
-	unsigned int tmp;
-
-	digit = countDigit(num);
 
 	if (num < 0)
 	{
 		i += _putchar('-');
-		tmp = -num;
+		num = -num;
+		digit = countDigit(num, 1);
 	}
 	else
+		digit = countDigit(num, 0);
+
+	if (flag->pflag == 1)
 	{
-		tmp = num;
-		if (flag->pflag == 1)
-		{
-			i += _putchar('+');
-			flagReset(flag);
-		}
-		else if (flag->sflag == 1)
-		{
-			i += _putchar(' ');
-			flagReset(flag);
-		}
+		i += _putchar('+');
+		flagReset(flag);
+	}
+	else if (flag->sflag == 1)
+	{
+		i += _putchar(' ');
+		flagReset(flag);
 	}
 	if (flag->zflag == 1)
 	{
@@ -81,7 +78,7 @@ int int_print(va_list arg, flag_t *flag)
 			j--;
 		}
 	}
-	i += print_num(tmp);
+	i += print_num(num);
 
 	return (i);
 }
@@ -96,7 +93,7 @@ int unsigned_print(va_list arg, flag_t *flag)
 	int i = 0, j, digit;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	digit = countDigit(num);
+	digit = countDigit(num, 0);
 	if (flag->zflag == 1)
 	{
 		j = flag->zpadder - digit;
@@ -135,7 +132,7 @@ int bigS_print(va_list arg, flag_t *flag)
 		{
 			c += _putchar('\\');
 			c += _putchar('x');
-			if (base_converter(str[y], 16, 1, 0) == 1)
+			if (hexa_convert(str[y], 1, 0) == 1)
 			{
 				c += _putchar('0');
 				c += base_converter(str[y], 16, 1, 1);
