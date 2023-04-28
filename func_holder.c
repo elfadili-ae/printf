@@ -48,18 +48,19 @@ int string_print(va_list arg, flag_t *flag)
  */
 int int_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j, digit, num = va_arg(arg, int);
+	int i = 0, j, digit, isNegative = 0, num = va_arg(arg, int);
 
 	if (num < 0)
 	{
 		i += _putchar('-');
 		num = -num;
+		isNegative = 1;
 		digit = countDigit(num, 1);
 	}
 	else
 		digit = countDigit(num, 0);
 
-	if (flag->pflag == 1)
+	if (flag->pflag == 1 && !isNegative)
 	{
 		i += _putchar('+');
 		flagReset(flag);

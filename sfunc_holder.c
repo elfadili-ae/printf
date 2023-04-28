@@ -18,9 +18,8 @@ int pointer_print(va_list arg, flag_t *flag)
 			c += _putchar(nil[c]);
 	else
 	{
-		c += _putchar('0');
-		c += _putchar('x');
-		c += base_converter(addr, 16, 0, 1);
+		c += _puts("0x");
+		c += hexa_convert(addr, 0, 1);
 	}
 
 	(void)flag;
