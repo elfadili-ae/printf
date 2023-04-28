@@ -96,7 +96,7 @@ int binary_print(va_list arg, flag_t *flag)
 	unsigned int num = va_arg(arg, unsigned int);
 
 	if (num != 0)
-		i += base_converter(num, 2, -1, 0);
+		i += base_converter(num, 2, -1, 1);
 	else
 		i += _putchar('0');
 
