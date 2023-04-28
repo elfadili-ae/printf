@@ -136,9 +136,9 @@ int bigS_print(va_list arg, flag_t *flag)
 			if (hexa_convert(str[y], 1, 0) == 1)
 			{
 				c += _putchar('0');
-				c += base_converter(str[y], 16, 1, 1);
+				c += hexa_convert(str[y], 1, 1);
 			} else
-				c += base_converter(str[y], 16, 1, 1);
+				c += hexa_convert(str[y], 1, 1);
 		}
 	}
 	(void)flag;
