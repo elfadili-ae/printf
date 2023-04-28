@@ -67,7 +67,7 @@ int upHexa_print(va_list arg, flag_t *flag)
 	int i = 0, j = 0, digit = 0;
 	unsigned int num = va_arg(arg, unsigned int);
 
-	digit = hexa_convert(num, -1, 0);
+	digit = hexa_convert(num, 1, 0);
 	if (flag->hflag == 1)
 	{
 		i += _puts("0X");
