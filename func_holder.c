@@ -48,7 +48,7 @@ int string_print(va_list arg, flag_t *flag)
  */
 int int_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j, digit, isNegative = 0, num = va_arg(arg, int);
+	int i = 0, j, k, digit, isNegative = 0, num = va_arg(arg, int);
 
 	if (num < 0)
 	{
@@ -59,28 +59,24 @@ int int_print(va_list arg, flag_t *flag)
 	}
 	else
 		digit = countDigit(num, 0);
-
 	if (flag->pflag == 1 && !isNegative)
-	{
 		i += _putchar('+');
-		flagReset(flag);
-	}
 	else if (flag->sflag == 1 && !isNegative)
-	{
 		i += _putchar(' ');
-		flagReset(flag);
-	}
-	if (flag->zflag == 1)
+	if (flag->zflag == 1 && !flag->mflag)
 	{
 		j = flag->zpadder - digit;
-		while (j > 0)
-		{
+		for (k = 0; k < j; k++)
 			i += _putchar('0');
-			j--;
-		}
 	}
 	i += print_num(num);
-
+	if(flag->mflag == 1)
+	{
+		j = flag->zpadder - digit;
+		for (k = 0; k < j; k++)
+			i += _putchar(' ');
+	}
+	flagReset(flag);
 	return (i);
 }
 /**
@@ -91,11 +87,11 @@ int int_print(va_list arg, flag_t *flag)
  */
 int unsigned_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j, digit;
+	int i = 0, j, k, digit;
 	unsigned int num = va_arg(arg, unsigned int);
 
 	digit = countDigit(num, 0);
-	if (flag->zflag == 1)
+	if (flag->zflag == 1 && !flag->mflag)
 	{
 		j = flag->zpadder - digit;
 		while (j > 0)
@@ -105,8 +101,14 @@ int unsigned_print(va_list arg, flag_t *flag)
 		}
 	}
 	i += print_num(num);
+	if(flag->mflag == 1)
+	{
+		j = flag->zpadder - digit;
+		for (k = 0; k < j; k++)
+			i += _putchar(' ');
+	}
+	flagReset(flag);
 
-	(void)flag;
 	return (i);
 }
 /**

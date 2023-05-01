@@ -12,6 +12,7 @@
  * @sflag: space flag
  * @pflag: plus flag (+)
  * @hflag: hash flag (#)
+ * @mflag: minus flag (-)
  */
 typedef struct flags
 {
@@ -19,6 +20,7 @@ typedef struct flags
 	int pflag;
 	int hflag;
 	int zflag;
+	int mflag;
 	int zpadder;
 } flag_t;
 
