@@ -15,10 +15,15 @@ int flagIt(const char *s, int i, flag_t *flag)
 		flag->pflag = 1;
 	else if (s[i] == '#')
 		flag->hflag = 1;
-	else if (s[i] == '0' && flag->zflag == 0)
+	else if (s[i] == '-')
+	{
+		flag->mflag = 1;
+	}
+	else if (s[i] == '0' && flag->zflag == 0 && !flag->zpadder)
 	{
 		flag->zflag = 1;
-	} else if (flag->zflag == 1 && s[i] <= '9' && s[i] >= '0')
+	} else if ((flag->zflag == 1 || flag->mflag || flag->mflag)
+		   && s[i] <= '9' && s[i] >= '0')
 	{
 		flag->zpadder = flag->zpadder * 10 + _atoi(s[i]);
 	}
@@ -48,4 +53,5 @@ void flagReset(flag_t *flag)
 	flag->pflag = 0;
 	flag->hflag = 0;
 	flag->zflag = 0;
+	flag->mflag = 0;
 }

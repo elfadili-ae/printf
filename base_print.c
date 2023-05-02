@@ -8,7 +8,7 @@
  */
 int octal_print(va_list arg, flag_t *flag)
 {
-	int i = 0, digit = 0, j = 0;
+	int i = 0, digit = 0, j = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
 	digit = base_converter(num, 8, -1, 0);
@@ -23,13 +23,20 @@ int octal_print(va_list arg, flag_t *flag)
 		i += _putchar('0');
 		digit++;
 	}
-	if (flag->zflag == 1)
+	if (flag->zflag == 1 && !flag->mflag)
 	{
 		j = flag->zpadder - digit;
-		while (j-- > 0)
+		for (k = 0; k < j; k++)
 			i += _putchar('0');
 	}
 	i += base_converter(num, 8, -1, 1);
+	if(flag->mflag == 1)
+	{
+		j = flag->zpadder - digit;
+		for (k = 0; k < j; k++)
+			i += _putchar(' ');
+	}
+	flagReset(flag);
 
 	return (i);
 }
@@ -42,7 +49,7 @@ int octal_print(va_list arg, flag_t *flag)
  */
 int hexa_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j = 0, digit = 0;
+	int i = 0, j = 0, digit = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
 	digit = hexa_convert(num, -1, 0);
@@ -56,13 +63,20 @@ int hexa_print(va_list arg, flag_t *flag)
 		i += _putchar('0');
 		digit++;
 	}
-	if (flag->zflag == 1)
+	if (flag->zflag == 1 && !flag->mflag)
 	{
 		j = flag->zpadder - digit;
-		while (j-- > 0)
+		for (k = 0; k < j; k++)
 			i += _putchar('0');
 	}
 	i += hexa_convert(num, 0, 1);
+	if(flag->mflag == 1)
+	{
+		j = flag->zpadder - digit;
+		for (k = 0; k < j; k++)
+			i += _putchar(' ');
+	}
+	flagReset(flag);
 
 	return (i);
 }
@@ -74,7 +88,7 @@ int hexa_print(va_list arg, flag_t *flag)
  */
 int upHexa_print(va_list arg, flag_t *flag)
 {
-	int i = 0, j = 0, digit = 0;
+	int i = 0, j = 0, digit = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
 	digit = hexa_convert(num, 1, 0);
@@ -88,13 +102,20 @@ int upHexa_print(va_list arg, flag_t *flag)
 		i += _putchar('0');
 		digit++;
 	}
-	if (flag->zflag == 1)
+	if (flag->zflag == 1 && !flag->mflag)
 	{
 		j = flag->zpadder - digit;
-		while (j-- > 0)
+		for (k = 0; k < j; k++)
 			i += _putchar('0');
 	}
 	i += hexa_convert(num, 1, 1);
+	if(flag->mflag == 1)
+	{
+		j = flag->zpadder - digit;
+		for (k = 0; k < j; k++)
+			i += _putchar(' ');
+	}
+	flagReset(flag);
 
 	return (i);
 }
