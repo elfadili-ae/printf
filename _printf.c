@@ -8,7 +8,7 @@
  * @c: specifier
  * Return: Function
  */
-int (*get_fun(char c))(va_list, flag_t *)
+int (*get_fun(char c))(va_list, flag_t *, int)
 {
 	int j;
 	func_t _funcs[] = {
@@ -43,8 +43,8 @@ int (*get_fun(char c))(va_list, flag_t *)
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i, Count = 0;
-	int (*fun)(va_list, flag_t *);
+	unsigned int i, lenSpec, Count = 0;
+	int (*fun)(va_list, flag_t *, int);
 	flag_t flags = {0, 0, 0, 0, 0, 0};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -64,9 +64,10 @@ int _printf(const char *format, ...)
 			}
 			while (flagIt(format, i, &flags))
 				i++;
+			lenSpec = getLength(format, &i);
 			fun = get_fun(format[i]);
 			if (fun)
-				Count += fun(arguments, &flags);
+				Count += fun(arguments, &flags, lenSpec);
 			else if (flagChecker(&flags))
 			{
 				Count += _putchar('%');
@@ -83,9 +84,10 @@ int _printf(const char *format, ...)
  * oo7_print - print double-oh-seven
  * @arg: argument
  * @flag: flag holder
+ * @length: length specifier
  * Return: 1 for printed char
  */
-int oo7_print(va_list arg, flag_t *flag)
+int oo7_print(va_list arg, flag_t *flag, int length)
 {
 	int c = 0;
 
@@ -93,5 +95,6 @@ int oo7_print(va_list arg, flag_t *flag)
 	flagReset(flag);
 
 	(void)arg;
+	(void)length;
 	return (c);
 }

@@ -7,13 +7,15 @@
  * char_print - print a character
  * @arg: va_list argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: new index
  */
-int char_print(va_list arg, flag_t *flag)
+int char_print(va_list arg, flag_t *flag, int length)
 {
 	char c = va_arg(arg, int);
 
 	(void)flag;
+	(void)length;
 	return (_putchar(c));
 }
 
@@ -21,9 +23,10 @@ int char_print(va_list arg, flag_t *flag)
  * string_print - print a character
  * @arg: va_list argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: new index
  */
-int string_print(va_list arg, flag_t *flag)
+int string_print(va_list arg, flag_t *flag, int length)
 {
 	char *str;
 	int y, c = 0;
@@ -38,18 +41,21 @@ int string_print(va_list arg, flag_t *flag)
 	}
 
 	(void) flag;
+	(void) length;
 	return (c);
 }
 /**
  * int_print - print integer
  * @arg: va_list argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: printed char count
  */
-int int_print(va_list arg, flag_t *flag)
+int int_print(va_list arg, flag_t *flag, int length)
 {
-	int i = 0, j, k, digit, isNegative = 0, num = va_arg(arg, int);
+	int i = 0, j, k, digit, isNegative = 0, num = va_arg(arg, long int);
 
+	num = lengthConverter(num, length);
 	if (num < 0)
 	{
 		i += _putchar('-');
@@ -83,13 +89,15 @@ int int_print(va_list arg, flag_t *flag)
  * unsigned_print - print unsigned integer
  * @arg: va_list argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: printed char count
  */
-int unsigned_print(va_list arg, flag_t *flag)
+int unsigned_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0, j, k, digit;
 	unsigned int num = va_arg(arg, unsigned int);
 
+	num = lengthConverter(num, length);
 	digit = countDigit(num, 0);
 	if (flag->zflag == 1 && !flag->mflag)
 	{
@@ -108,7 +116,6 @@ int unsigned_print(va_list arg, flag_t *flag)
 			i += _putchar(' ');
 	}
 	flagReset(flag);
-
 	return (i);
 }
 /**
@@ -116,9 +123,10 @@ int unsigned_print(va_list arg, flag_t *flag)
  * and change special ASCII char to \x
  * @arg: va_list argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: printed char count
  */
-int bigS_print(va_list arg, flag_t *flag)
+int bigS_print(va_list arg, flag_t *flag, int length)
 {
 	char *str;
 	int y, c = 0;
@@ -144,5 +152,6 @@ int bigS_print(va_list arg, flag_t *flag)
 		}
 	}
 	(void)flag;
+	(void)length;
 	return (c);
 }
