@@ -6,7 +6,7 @@
  * @i: index in the buffer
  * Return: 1 (l spec) 2 (h spec) 0 (non)
  */
-int getLength(const char *s, int *i)
+int getLength(const char *s, unsigned int *i)
 {
 	int index = *i + 1, len = 0;
 

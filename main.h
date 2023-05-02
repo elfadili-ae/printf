@@ -60,7 +60,7 @@ int print_rev(va_list arg, flag_t *, int);
 int rot13(va_list arg, flag_t *, int);
 int oo7_print(va_list arg, flag_t *flag, int);
 
-int getLength(const char *s, int *i);
+int getLength(const char *s, unsigned int *i);
 int flagIt(const char *str, int i, flag_t *);
 int flagChecker(flag_t *flag);
 
