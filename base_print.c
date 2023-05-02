@@ -30,7 +30,7 @@ int octal_print(va_list arg, flag_t *flag)
 			i += _putchar('0');
 	}
 	i += base_converter(num, 8, -1, 1);
-	if(flag->mflag == 1)
+	if (flag->mflag == 1)
 	{
 		j = flag->zpadder - digit;
 		for (k = 0; k < j; k++)
@@ -70,7 +70,7 @@ int hexa_print(va_list arg, flag_t *flag)
 			i += _putchar('0');
 	}
 	i += hexa_convert(num, 0, 1);
-	if(flag->mflag == 1)
+	if (flag->mflag == 1)
 	{
 		j = flag->zpadder - digit;
 		for (k = 0; k < j; k++)
@@ -109,7 +109,7 @@ int upHexa_print(va_list arg, flag_t *flag)
 			i += _putchar('0');
 	}
 	i += hexa_convert(num, 1, 1);
-	if(flag->mflag == 1)
+	if (flag->mflag == 1)
 	{
 		j = flag->zpadder - digit;
 		for (k = 0; k < j; k++)

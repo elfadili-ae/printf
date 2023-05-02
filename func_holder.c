@@ -70,7 +70,7 @@ int int_print(va_list arg, flag_t *flag)
 			i += _putchar('0');
 	}
 	i += print_num(num);
-	if(flag->mflag == 1)
+	if (flag->mflag == 1)
 	{
 		j = flag->zpadder - digit;
 		for (k = 0; k < j; k++)
@@ -101,7 +101,7 @@ int unsigned_print(va_list arg, flag_t *flag)
 		}
 	}
 	i += print_num(num);
-	if(flag->mflag == 1)
+	if (flag->mflag == 1)
 	{
 		j = flag->zpadder - digit;
 		for (k = 0; k < j; k++)
