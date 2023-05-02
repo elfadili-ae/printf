@@ -4,13 +4,15 @@
  * octal_print - print number in octal (8 base)
  * @arg: argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: digit counter
  */
-int octal_print(va_list arg, flag_t *flag)
+int octal_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0, digit = 0, j = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
+	num = lengthConverter(num, length);
 	digit = base_converter(num, 8, -1, 0);
 
 	if (flag->hflag == 1 && num != 0)
@@ -37,7 +39,6 @@ int octal_print(va_list arg, flag_t *flag)
 			i += _putchar(' ');
 	}
 	flagReset(flag);
-
 	return (i);
 }
 
@@ -45,13 +46,15 @@ int octal_print(va_list arg, flag_t *flag)
  * hexa_print - print number in hexadecimal (16 base)
  * @arg: argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: digit counter
  */
-int hexa_print(va_list arg, flag_t *flag)
+int hexa_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0, j = 0, digit = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
+	num = lengthConverter(num, length);
 	digit = hexa_convert(num, -1, 0);
 	if (flag->hflag == 1 && num != 0)
 	{
@@ -77,20 +80,21 @@ int hexa_print(va_list arg, flag_t *flag)
 			i += _putchar(' ');
 	}
 	flagReset(flag);
-
 	return (i);
 }
 /**
  * upHexa_print - print number in hexa uppercase (16 base)
  * @arg: argument
  * @flag: flags holder
+ * @length: length specifier
  * Return: digit counter
  */
-int upHexa_print(va_list arg, flag_t *flag)
+int upHexa_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0, j = 0, digit = 0, k;
 	unsigned int num = va_arg(arg, unsigned int);
 
+	num = lengthConverter(num, length);
 	digit = hexa_convert(num, 1, 0);
 	if (flag->hflag == 1 && num != 0)
 	{
@@ -116,16 +120,16 @@ int upHexa_print(va_list arg, flag_t *flag)
 			i += _putchar(' ');
 	}
 	flagReset(flag);
-
 	return (i);
 }
 /**
   * binary_print - print number in binary (2 base)
   * @arg: argument
   * @flag: flags holder
+  * @length: length specifier
   * Return: digit counter
   */
-int binary_print(va_list arg, flag_t *flag)
+int binary_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0;
 	unsigned int num = va_arg(arg, unsigned int);
@@ -136,5 +140,6 @@ int binary_print(va_list arg, flag_t *flag)
 	i += base_converter(num, 2, -1, 1);
 
 	(void)flag;
+	(void)length;
 	return (i);
 }

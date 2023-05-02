@@ -72,3 +72,17 @@ int countDigit(unsigned long int num, int isNegative)
 
 	return (digit);
 }
+
+/**
+ *
+ *
+ */
+long int lengthConverter(long int num, int length)
+{
+	if (length == 1)
+		return (num);
+	else if (length == 2)
+		return ((short) num);
+	else
+		return ((int) num);
+}

@@ -4,9 +4,10 @@
  * pointer_print - print the adres of the pointer variable
  * @arg: argument that holds the adress
  * @flag: flags holder
+ * @length: length specifier
  * Return: the number of characters printed
  */
-int pointer_print(va_list arg, flag_t *flag)
+int pointer_print(va_list arg, flag_t *flag, int length)
 {
 	int c = 0;
 	unsigned long int addr = va_arg(arg, unsigned long int);
@@ -25,16 +26,17 @@ int pointer_print(va_list arg, flag_t *flag)
 		c += _puts("0x");
 		c += hexa_convert(addr, 0, 1);
 	}
-
+	(void)length;
 	return (c);
 }
 /**
  * print_rev - Print a string in reverse
  * @arg: va_list argument
  * @flag: void
+ * @lenS: length specifier
  * Return: character count
  */
-int print_rev(va_list arg, flag_t *flag)
+int print_rev(va_list arg, flag_t *flag, int lenS)
 {
 	char *s;
 	int length = 0;
@@ -53,15 +55,17 @@ int print_rev(va_list arg, flag_t *flag)
 		s--;
 	}
 	(void)flag;
+	(void)lenS;
 	return (c);
 }
 /**
  * rot13 - encode a string by using rot13
  * @arg: va_list argument
  * @flag: unused
+ * @length: length specifier
  * Return: character count
  */
-int rot13(va_list arg, flag_t *flag)
+int rot13(va_list arg, flag_t *flag, int length)
 {
 	char *s = va_arg(arg, char *), n[] = "(null)";
 	int i, j, c = 0;
@@ -90,5 +94,6 @@ int rot13(va_list arg, flag_t *flag)
 			c += _putchar(s[i]);
 	}
 	(void)flag;
+	(void)length;
 	return (c);
 }
