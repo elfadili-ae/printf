@@ -8,12 +8,12 @@
  */
 long int lConverter(long int num, int length)
 {
-        if (length == 1)
-                return (num);
-        else if (length == 2)
-                return ((short) num);
-        else
-                return ((int) num);
+	if (length == 1)
+		return (num);
+	else if (length == 2)
+		return ((short) num);
+	else
+		return ((int) num);
 }
 
 /**
@@ -24,10 +24,10 @@ long int lConverter(long int num, int length)
  */
 long int luConverter(unsigned long int num, int length)
 {
-        if (length == 1)
-                return (num);
-        else if (length == 2)
-                return ((unsigned short) num);
-        else
-                return ((unsigned int) num);
+	if (length == 1)
+		return (num);
+	else if (length == 2)
+		return ((unsigned short) num);
+	else
+		return ((unsigned int) num);
 }
