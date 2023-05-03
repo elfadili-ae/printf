@@ -48,7 +48,7 @@ int char_print(va_list args, flag_t *, int);
 int string_print(va_list args, flag_t *, int);
 int int_print(va_list args, flag_t *, int);
 
-int print_num(unsigned int n);
+int print_num(unsigned long int n);
 int octal_print(va_list arg, flag_t *, int);
 int hexa_print(va_list arg, flag_t *, int);
 int upHexa_print(va_list arg, flag_t *, int);

@@ -24,7 +24,7 @@ int _strcpy(char *dest, char *src, int i)
  * @n: number to print
  * Return: number of digits printed
  */
-int print_num(unsigned int n)
+int print_num(unsigned long int n)
 {
 	int i = 0;
 
