@@ -12,7 +12,9 @@
  * @sflag: space flag
  * @pflag: plus flag (+)
  * @hflag: hash flag (#)
+ * @zflag: zero flag
  * @mflag: minus flag (-)
+ * @zpadder: holds the number for padding
  */
 
 typedef struct flags

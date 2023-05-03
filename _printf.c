@@ -43,8 +43,8 @@ int (*get_fun(char c))(va_list, flag_t *, int)
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i, lenSpec, Count = 0;
-	int (*fun)(va_list, flag_t *, int);
+	unsigned int i, Count = 0;
+	int (*fun)(va_list, flag_t *, int), lenSpec = 0;
 	flag_t flags = {0, 0, 0, 0, 0, 0};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -65,7 +65,8 @@ int _printf(const char *format, ...)
 			while (flagIt(format, i, &flags))
 				i++;
 			lenSpec = getLength(format, &i);
-			i++;
+				if (lenSpec != 0)
+					i++;
 			fun = get_fun(format[i]);
 			if (fun)
 				Count += fun(arguments, &flags, lenSpec);

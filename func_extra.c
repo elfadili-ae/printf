@@ -74,8 +74,10 @@ int countDigit(unsigned long int num, int isNegative)
 }
 
 /**
- *
- *
+ * lengthConverter - convert number's type
+ * @num: number to convert
+ * @length: type to change to
+ * Return: number converted
  */
 long int lengthConverter(long int num, int length)
 {

@@ -8,19 +8,15 @@
  */
 int getLength(const char *s, unsigned int *i)
 {
-	int index = *i + 1, len = 0;
+	int len = 0;
 
-	switch (s[index])
-	{
-	case 'l':
+	if (s[*i] == 'l')
 		len = 1;
-		break;
-	case 'h':
+	else if (s[*i] == 'h')
 		len = 2;
-		break;
-	default:
-		*i = index - 1;
-		break;
-	}
+
+	if (len != 0)
+		*i++;
+
 	return (len);
 }
