@@ -69,7 +69,8 @@ int flagChecker(flag_t *flag);
 
 void flagReset(flag_t *flag);
 
-long int lengthConverter(long int num, int length);
+long int luConverter(unsigned long int num, int length);
+long int lConverter(long int num, int length);
 int _atoi(char s);
 int _strcpy(char *dest, char *src, int i);
 int countDigit(unsigned long int num, int isNegative);

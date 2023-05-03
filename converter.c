@@ -10,7 +10,7 @@
  */
 int base_converter(unsigned long int num, int base, int _case, int print)
 {
-	int r = 0, i = 0;
+	long int r = 0, i = 0;
 
 	if (print == 1)
 	{

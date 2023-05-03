@@ -12,9 +12,8 @@ int octal_print(va_list arg, flag_t *flag, int length)
 	int i = 0, digit = 0, j = 0, k;
 	unsigned long int num = va_arg(arg, unsigned long int);
 
-	num = lengthConverter(num, length);
+	num = luConverter(num, length);
 	digit = base_converter(num, 8, -1, 0);
-
 	if (flag->hflag == 1 && num != 0)
 	{
 		i += _putchar('0');
@@ -54,7 +53,7 @@ int hexa_print(va_list arg, flag_t *flag, int length)
 	int i = 0, j = 0, digit = 0, k;
 	unsigned long int num = va_arg(arg, unsigned long int);
 
-	num = lengthConverter(num, length);
+	num = luConverter(num, length);
 	digit = hexa_convert(num, -1, 0);
 	if (flag->hflag == 1 && num != 0)
 	{
@@ -94,7 +93,7 @@ int upHexa_print(va_list arg, flag_t *flag, int length)
 	int i = 0, j = 0, digit = 0, k;
 	unsigned long int num = va_arg(arg, unsigned long int);
 
-	num = lengthConverter(num, length);
+	num = luConverter(num, length);
 	digit = hexa_convert(num, 1, 0);
 	if (flag->hflag == 1 && num != 0)
 	{
