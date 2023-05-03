@@ -53,7 +53,8 @@ int string_print(va_list arg, flag_t *flag, int length)
  */
 int int_print(va_list arg, flag_t *flag, int length)
 {
-	int i = 0, j, k, digit, isNegative = 0, num = va_arg(arg, long int);
+	int i = 0, j, k, digit, isNegative = 0;
+	long int num = va_arg(arg, long int);
 
 	num = lengthConverter(num, length);
 	if (num < 0)
@@ -95,7 +96,7 @@ int int_print(va_list arg, flag_t *flag, int length)
 int unsigned_print(va_list arg, flag_t *flag, int length)
 {
 	int i = 0, j, k, digit;
-	unsigned int num = va_arg(arg, unsigned int);
+	unsigned long int num = va_arg(arg, unsigned long int);
 
 	num = lengthConverter(num, length);
 	digit = countDigit(num, 0);
