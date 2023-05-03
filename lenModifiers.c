@@ -16,7 +16,7 @@ int getLength(const char *s, unsigned int *i)
 		len = 2;
 
 	if (len != 0)
-		*i++;
+		*i = *i + 1;
 
 	return (len);
 }

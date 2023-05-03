@@ -65,8 +65,6 @@ int _printf(const char *format, ...)
 			while (flagIt(format, i, &flags))
 				i++;
 			lenSpec = getLength(format, &i);
-				if (lenSpec != 0)
-					i++;
 			fun = get_fun(format[i]);
 			if (fun)
 				Count += fun(arguments, &flags, lenSpec);
